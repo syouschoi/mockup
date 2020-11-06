@@ -11,6 +11,8 @@
         <input type="text" maxlength="60" id="userAddr" v-model="userAddr" />
       </div>
       <div class="item button">
+        <button type="button" @click="openPop">테스트팝업 열기</button>
+        <button type="button" @click="closePop">테스트팝업 닫기</button>
         <button type="button" @click="next">다음</button>
       </div>
     </form>
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import bus from "@/utils/bus";
 import { mapActions } from "vuex";
 export default {
   name: "Step1UserSetting",
@@ -44,6 +47,12 @@ export default {
     ...mapActions(["SET_INFO"]),
     next() {
       this.$emit("switch", "Step2InfoSetting");
+    },
+    openPop() {
+      bus.$emit("show:popup", "테스트");
+    },
+    closePop() {
+      bus.$emit("hide:popup");
     }
   }
 };
