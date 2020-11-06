@@ -1,5 +1,11 @@
 <template>
-  <component @switch="switchComponent" v-bind:is="currentComponent"></component>
+  <div>
+    <component
+      @switch="switchComponent"
+      v-bind:is="currentComponent"
+    ></component>
+    <LayerPopup />
+  </div>
 </template>
 
 <script>
@@ -11,7 +17,8 @@ export default {
   }),
   components: {
     Step1UserSetting: loadComponent("Step1UserSetting"),
-    Step2InfoSetting: loadComponent("Step2InfoSetting")
+    Step2InfoSetting: loadComponent("Step2InfoSetting"),
+    LayerPopup: loadComponent("LayerPopup")
   },
   methods: {
     switchComponent(compName) {
